@@ -1,16 +1,15 @@
-﻿using hospital_management_system.Utils;
-
-namespace hospital_management_system.Models
+﻿namespace hospital_management_system.Models
 {
     internal class Doctor : Person
     {
-        private int id { get; set; }
-        private string specialty { get; set; }
-        private int room_number { get; set; }
+        public int id { get; set; }
+        public string specialty { get; set; }
+        public int room_number { get; set; }
 
-        public Doctor(string name, string phone_number, string email, string gender, string birth_date, string specialty, int room_number) : base(name, phone_number, email, gender, birth_date)
+        public Doctor(int id, string name, string phone_number, string email, string gender, string birth_date, string specialty, int room_number) : base(name, phone_number, email, gender, birth_date)
         {
-            this.id = new Util().generateRandomId(8);
+            //this.id = new Util().generateRandomId(8);
+            this.id = id;
             this.specialty = specialty;
             this.room_number = room_number;
         }
