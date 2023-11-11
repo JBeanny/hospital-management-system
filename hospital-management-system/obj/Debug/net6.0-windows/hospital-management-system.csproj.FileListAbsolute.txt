@@ -18,3 +18,4 @@ C:\Users\USer\Desktop\hospital-management-system\hospital-management-system\obj\
 C:\Users\USer\Desktop\hospital-management-system\hospital-management-system\obj\Debug\net6.0-windows\hospital_management_system.Resource1.resources
 C:\Users\USer\Desktop\hospital-management-system\hospital-management-system\obj\Debug\net6.0-windows\hospital_management_system.DoctorForm.resources
 C:\Users\USer\Desktop\hospital-management-system\hospital-management-system\obj\Debug\net6.0-windows\hospital_management_system.PatientForm.resources
+C:\Users\USer\Desktop\hospital-management-system\hospital-management-system\obj\Debug\net6.0-windows\hospital_management_system.AddDoctorForm.resources

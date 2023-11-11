@@ -6,9 +6,20 @@ namespace hospital_management_system
     {
         string filePath = Path.Combine(Environment.CurrentDirectory, "Data", "Doctors.txt");
         List<Doctor> doctors = new List<Doctor>();
+        private AddDoctorForm addDoctorForm;
         public DoctorForm()
         {
             InitializeComponent();
+            addDoctorBtn.Click += handleAddDoctor;
+        }
+
+        private void handleAddDoctor(object sender, EventArgs e)
+        {
+            if (addDoctorForm == null || addDoctorForm.IsDisposed)
+            {
+                addDoctorForm = new AddDoctorForm();
+                addDoctorForm.Show();
+            }
         }
 
         private void DoctorForm_Load(object sender, EventArgs e)
