@@ -246,6 +246,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(nameInput);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "AddDoctorForm";
             Text = "Doctor Registration Form";
             ResumeLayout(false);

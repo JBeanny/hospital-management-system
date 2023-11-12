@@ -113,8 +113,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1261, 744);
             Controls.Add(dataGridView1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "PatientForm";
-            Text = "PatientForm";
+            Text = "Patient Management Form";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }

@@ -121,7 +121,7 @@
             Column4.HeaderText = "Phone Number";
             Column4.MinimumWidth = 8;
             Column4.Name = "Column4";
-            Column4.Width = 154;
+            Column4.Width = 168;
             // 
             // Column5
             // 
@@ -135,7 +135,7 @@
             Column6.HeaderText = "Birth Date";
             Column6.MinimumWidth = 8;
             Column6.Name = "Column6";
-            Column6.Width = 117;
+            Column6.Width = 126;
             // 
             // Column7
             // 
@@ -149,7 +149,7 @@
             Column8.HeaderText = "Room ID";
             Column8.MinimumWidth = 8;
             Column8.Name = "Column8";
-            Column8.Width = 110;
+            Column8.Width = 119;
             // 
             // addDoctorBtn
             // 
@@ -167,6 +167,8 @@
             ClientSize = new Size(1270, 744);
             Controls.Add(addDoctorBtn);
             Controls.Add(dataGridView1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "DoctorForm";
             Text = "Doctor Management Form";
             Load += DoctorForm_Load;
