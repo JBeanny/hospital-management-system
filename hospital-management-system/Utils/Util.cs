@@ -2,17 +2,17 @@
 {
     internal class Util
     {
-        public int generateRandomId(int length)
+        public string generateRandomId(int length, string prefix)
         {
+            // Initialize the random number generator
             Random random = new Random();
-            string idString = "";
 
-            for (int i = 0; i < length; i++)
-            {
-                idString += random.Next().ToString();
-            }
+            // Generate a random number with 5 digits
+            int minLength = 10000; // Minimum value for a 5-digit number
+            int maxLength = 99999; // Maximum value for a 5-digit number
+            int randomNumber = random.Next(minLength, maxLength + 1);
 
-            return (int)Int64.Parse(idString);
+            return prefix + "_" + randomNumber;
         }
     }
 }
