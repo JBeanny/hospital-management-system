@@ -1,6 +1,6 @@
 ﻿namespace hospital_management_system.Models
 {
-    internal class Person
+    public class Person
     {
         public string name { get; set; }
         public string phone_number { get; set; }
@@ -15,6 +15,11 @@
             this.email = email;
             this.gender = gender;
             this.birth_date = birth_date;
+        }
+
+        public Person()
+        {
+
         }
 
     }

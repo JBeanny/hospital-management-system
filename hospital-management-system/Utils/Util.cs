@@ -1,6 +1,6 @@
 ﻿namespace hospital_management_system.Utils
 {
-    internal class Util
+    public class Util
     {
         public string generateRandomId(int length, string prefix)
         {
@@ -13,6 +13,18 @@
             int randomNumber = random.Next(minLength, maxLength + 1);
 
             return prefix + "_" + randomNumber;
+        }
+
+        // validate input
+        public Boolean validateInput(string id, string name, string gender, string phone, string email, string birthdate, string specialty, string room)
+        {
+            return id != "" || name != "" || gender != "" || phone != "" || email != "" || birthdate != "" || specialty != "" || room != "";
+        }
+
+        // formatted string
+        public string formattedFileData(string id, string name, string gender, string phone, string email, string birthdate, string specialty, string room)
+        {
+            return id + "/" + name + "/" + gender + "/" + phone + "/" + email + "/" + birthdate + "/" + specialty + "/" + room;
         }
     }
 }

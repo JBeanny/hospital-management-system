@@ -1,4 +1,5 @@
 ﻿using hospital_management_system.Models;
+using hospital_management_system.Utils;
 
 namespace hospital_management_system
 {
@@ -7,14 +8,78 @@ namespace hospital_management_system
         string filePath = Path.Combine(Environment.CurrentDirectory, "Data", "Doctors.txt");
         List<Doctor> doctors = new List<Doctor>();
         private AddDoctorForm addDoctorForm;
-        static DateTime lastModifiedTime = DateTime.MinValue;
+        Util util = new Util();
+
+        // selected row
+        Doctor selectedDoctor = new Doctor();
 
         public DoctorForm()
         {
             InitializeComponent();
+
             addDoctorBtn.Click += handleAddDoctor;
+            dataGridView1.SelectionChanged += handleRowSelection;
+            editBtn.Click += handleEditDoctor;
+            deleteBtn.Click += handleDeleteDoctor;
+            refreshBtn.Click += handleRefresh;
         }
 
+        // handle refresh action
+        private void handleRefresh(object sender, EventArgs e)
+        {
+            DoctorForm_Load(sender, e);
+        }
+
+        // edit
+        private void handleEditDoctor(object? sender, EventArgs e)
+        {
+            if (addDoctorForm == null || addDoctorForm.IsDisposed)
+            {
+                addDoctorForm = new AddDoctorForm("Edit", selectedDoctor);
+                addDoctorForm.Show();
+            }
+        }
+
+        // handle row selection
+        private void handleRowSelection(object? sender, EventArgs e)
+        {
+            Doctor selectedRow = dataGridView1.CurrentRow.Tag as Doctor;
+
+            if (selectedRow == null) return;
+
+            selectedDoctor.id = selectedRow.id;
+            selectedDoctor.email = selectedRow.email;
+            selectedDoctor.name = selectedRow.name;
+            selectedDoctor.birth_date = selectedRow.birth_date;
+            selectedDoctor.gender = selectedRow.gender;
+            selectedDoctor.phone_number = selectedRow.phone_number;
+            selectedDoctor.specialty = selectedRow.specialty;
+            selectedDoctor.room_number = selectedRow.room_number;
+        }
+
+        // delete method
+        private void handleDeleteDoctor(object? sender, EventArgs e)
+        {
+            StreamWriter writer = new StreamWriter(filePath);
+            var result = MessageBox.Show("Are you sure to delete this ?", "Delete Doctor", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                doctors.ForEach(doctor =>
+                {
+                    if (doctor.id == selectedDoctor.id) return;
+
+                    string formattedString = util.formattedFileData(doctor.id, doctor.name, doctor.gender, doctor.phone_number, doctor.email, doctor.birth_date, doctor.specialty, doctor.room_number);
+
+                    writer.WriteLine(formattedString);
+                });
+
+                writer.Close();
+                handleRefresh(sender, e);
+            }
+        }
+
+        // add method
         private void handleAddDoctor(object sender, EventArgs e)
         {
             if (addDoctorForm == null || addDoctorForm.IsDisposed)
@@ -24,53 +89,47 @@ namespace hospital_management_system
             }
         }
 
+        // on load function
         private void DoctorForm_Load(object sender, EventArgs e)
         {
             readDoctorsData();
         }
 
+        // read data from file
         private void readDoctorsData()
         {
-            if (File.Exists(filePath))
+            try
             {
-                var lines = File.ReadAllLines(filePath);
-
-                doctors.Clear();
-                if (lines.Length > 0)
+                if (File.Exists(filePath))
                 {
-                    foreach (var line in lines)
+                    var lines = File.ReadAllLines(filePath);
+
+                    doctors.Clear();
+                    if (lines.Length > 0)
                     {
-                        var dataRow = line.Split("/");
-                        Doctor newDoctor = new Doctor(dataRow[0], dataRow[1], dataRow[3], dataRow[4], dataRow[2], dataRow[5], dataRow[6], dataRow[7]);
+                        foreach (var line in lines)
+                        {
+                            var dataRow = line.Split("/");
+                            Doctor newDoctor = new Doctor(dataRow[0], dataRow[1], dataRow[3], dataRow[4], dataRow[2], dataRow[5], dataRow[6], dataRow[7]);
 
-                        if (newDoctor == null) continue;
-                        doctors.Add(newDoctor);
+                            if (newDoctor == null) continue;
+                            doctors.Add(newDoctor);
+                        }
                     }
+                    viewDoctors();
                 }
-                viewDoctors();
+                else
+                {
+                    MessageBox.Show("File is not existed", "Failed to open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("File is not existed");
+                MessageBox.Show(ex.Message, "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void dataGridView1_SelectionChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            // Ensure that a row is selected and the click is not on the header
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-
-                // Access values from cells in the selected row by specifying the column index or column name
-                string column1Value = selectedRow.Cells["ColumnName1"].Value.ToString(); // Replace "ColumnName1" with your column name or use the index
-                string column2Value = selectedRow.Cells["ColumnName2"].Value.ToString(); // Replace "ColumnName2" with your column name or use the index
-
-                // Use the values as needed
-                addDoctorForm.Show();
-            }
-        }
-
+        // view doctors
         private void viewDoctors()
         {
             dataGridView1.Rows.Clear();

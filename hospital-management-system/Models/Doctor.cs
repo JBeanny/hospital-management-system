@@ -1,6 +1,6 @@
 ﻿namespace hospital_management_system.Models
 {
-    internal class Doctor : Person
+    public class Doctor : Person
     {
         public string id { get; set; }
         public string specialty { get; set; }
@@ -12,6 +12,10 @@
             this.id = id;
             this.specialty = specialty;
             this.room_number = room_number;
+        }
+        public Doctor()
+        {
+
         }
     }
 }
