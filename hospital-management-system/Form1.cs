@@ -53,5 +53,10 @@ namespace hospital_management_system
         {
 
         }
+
+        private void titleLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

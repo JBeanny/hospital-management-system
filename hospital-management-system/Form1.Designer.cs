@@ -28,89 +28,153 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listView1 = new ListView();
             viewDoctorBtn = new Button();
             viewNurseBtn = new Button();
             viewPatientBtn = new Button();
-            logoImageBox = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)logoImageBox).BeginInit();
+            doctorLabel = new Label();
+            nurseLabel = new Label();
+            patientLabel = new Label();
+            titleLabel = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // listView1
-            // 
-            listView1.BackColor = Color.FromArgb(150, 194, 145);
-            listView1.Location = new Point(0, 0);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(300, 848);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // viewDoctorBtn
             // 
+            viewDoctorBtn.BackgroundImage = Resource1.nurse__1_;
+            viewDoctorBtn.BackgroundImageLayout = ImageLayout.Zoom;
             viewDoctorBtn.Cursor = Cursors.Hand;
-            viewDoctorBtn.Location = new Point(12, 192);
+            viewDoctorBtn.Font = new Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            viewDoctorBtn.ImageAlign = ContentAlignment.TopCenter;
+            viewDoctorBtn.Location = new Point(375, 310);
             viewDoctorBtn.Name = "viewDoctorBtn";
-            viewDoctorBtn.Size = new Size(277, 74);
+            viewDoctorBtn.Size = new Size(170, 163);
             viewDoctorBtn.TabIndex = 1;
-            viewDoctorBtn.Text = "List Doctors";
+            viewDoctorBtn.TextAlign = ContentAlignment.BottomCenter;
             viewDoctorBtn.UseVisualStyleBackColor = true;
             viewDoctorBtn.Click += viewDoctors;
             // 
             // viewNurseBtn
             // 
+            viewNurseBtn.BackgroundImage = Resource1.nurse;
+            viewNurseBtn.BackgroundImageLayout = ImageLayout.Zoom;
             viewNurseBtn.Cursor = Cursors.Hand;
-            viewNurseBtn.Location = new Point(12, 293);
+            viewNurseBtn.Location = new Point(666, 310);
             viewNurseBtn.Name = "viewNurseBtn";
-            viewNurseBtn.Size = new Size(277, 74);
+            viewNurseBtn.Size = new Size(170, 163);
             viewNurseBtn.TabIndex = 2;
-            viewNurseBtn.Text = "List Nurses";
             viewNurseBtn.UseVisualStyleBackColor = true;
             // 
             // viewPatientBtn
             // 
+            viewPatientBtn.BackgroundImage = Resource1.male_nurse;
+            viewPatientBtn.BackgroundImageLayout = ImageLayout.Zoom;
             viewPatientBtn.Cursor = Cursors.Hand;
-            viewPatientBtn.Location = new Point(12, 394);
+            viewPatientBtn.Location = new Point(946, 310);
             viewPatientBtn.Name = "viewPatientBtn";
-            viewPatientBtn.Size = new Size(277, 74);
+            viewPatientBtn.Size = new Size(170, 163);
             viewPatientBtn.TabIndex = 3;
-            viewPatientBtn.Text = "List Patients";
             viewPatientBtn.UseVisualStyleBackColor = true;
             // 
-            // logoImageBox
+            // doctorLabel
             // 
-            logoImageBox.Image = Resource1.logo;
-            logoImageBox.ImageLocation = "";
-            logoImageBox.Location = new Point(68, 12);
-            logoImageBox.Name = "logoImageBox";
-            logoImageBox.Size = new Size(150, 75);
-            logoImageBox.TabIndex = 4;
-            logoImageBox.TabStop = false;
-            logoImageBox.Click += logoImageBox_Click;
+            doctorLabel.AutoSize = true;
+            doctorLabel.BorderStyle = BorderStyle.Fixed3D;
+            doctorLabel.Font = new Font("Showcard Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            doctorLabel.Location = new Point(399, 500);
+            doctorLabel.Margin = new Padding(4, 0, 4, 0);
+            doctorLabel.Name = "doctorLabel";
+            doctorLabel.RightToLeft = RightToLeft.No;
+            doctorLabel.Size = new Size(115, 28);
+            doctorLabel.TabIndex = 4;
+            doctorLabel.Text = "Doctors";
+            // 
+            // nurseLabel
+            // 
+            nurseLabel.AutoSize = true;
+            nurseLabel.BorderStyle = BorderStyle.Fixed3D;
+            nurseLabel.Font = new Font("Showcard Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            nurseLabel.Location = new Point(709, 500);
+            nurseLabel.Margin = new Padding(4, 0, 4, 0);
+            nurseLabel.Name = "nurseLabel";
+            nurseLabel.RightToLeft = RightToLeft.No;
+            nurseLabel.Size = new Size(86, 28);
+            nurseLabel.TabIndex = 5;
+            nurseLabel.Text = "Nurses";
+            // 
+            // patientLabel
+            // 
+            patientLabel.AutoSize = true;
+            patientLabel.BorderStyle = BorderStyle.Fixed3D;
+            patientLabel.Font = new Font("Showcard Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            patientLabel.Location = new Point(981, 500);
+            patientLabel.Margin = new Padding(4, 0, 4, 0);
+            patientLabel.Name = "patientLabel";
+            patientLabel.RightToLeft = RightToLeft.No;
+            patientLabel.Size = new Size(106, 28);
+            patientLabel.TabIndex = 6;
+            patientLabel.Text = "Patients";
+            // 
+            // titleLabel
+            // 
+            titleLabel.AutoSize = true;
+            titleLabel.BackColor = Color.Transparent;
+            titleLabel.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Underline, GraphicsUnit.Point);
+            titleLabel.ForeColor = Color.FromArgb(150, 194, 145);
+            titleLabel.ImageAlign = ContentAlignment.MiddleLeft;
+            titleLabel.Location = new Point(600, 75);
+            titleLabel.Margin = new Padding(4, 0, 4, 0);
+            titleLabel.Name = "titleLabel";
+            titleLabel.RightToLeft = RightToLeft.No;
+            titleLabel.Size = new Size(0, 54);
+            titleLabel.TabIndex = 7;
+            titleLabel.TextAlign = ContentAlignment.MiddleCenter;
+            titleLabel.Click += titleLabel_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = Properties.Resources.hospital_logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(-25, -54);
+            pictureBox1.Margin = new Padding(4, 5, 4, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(475, 255);
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1507, 847);
-            Controls.Add(logoImageBox);
+            Controls.Add(pictureBox1);
+            Controls.Add(titleLabel);
+            Controls.Add(patientLabel);
+            Controls.Add(nurseLabel);
+            Controls.Add(doctorLabel);
             Controls.Add(viewPatientBtn);
             Controls.Add(viewNurseBtn);
             Controls.Add(viewDoctorBtn);
-            Controls.Add(listView1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Hospital Management System";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)logoImageBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private ListView listView1;
         private Button viewDoctorBtn;
         private Button viewNurseBtn;
         private Button viewPatientBtn;
-        private PictureBox logoImageBox;
+        private Label doctorLabel;
+        private Label nurseLabel;
+        private Label patientLabel;
+        private Label titleLabel;
+        private PictureBox pictureBox1;
     }
 }
