@@ -1,22 +1,22 @@
-﻿using hospital_management_system.Utils;
-
-namespace hospital_management_system.Models
+﻿namespace hospital_management_system.Models
 {
-    internal class Patient : Person
+    public class Patient : Person
     {
-        private string id { get; set; }
-        private int age { get; set; }
-        private List<string> sicknesses { get; set; }
-        private List<string> allergies { get; set; }
-        private List<string> prescriptions { get; set; }
+        public string id { get; set; }
+        public int age { get; set; }
+        public string sicknesses { get; set; }
+        public string allergies { get; set; }
 
-        public Patient(string name, string phone_number, string email, string gender, string birth_date, int age, List<string> sicknesses, List<string> allergies, List<string> prescriptions) : base(name, phone_number, email, gender, birth_date)
+        public Patient(string id, string name, string phone_number, string email, string gender, string birth_date, string sicknesses, string allergies) : base(name, phone_number, email, gender, birth_date)
         {
-            this.id = new Util().generateRandomId(8, "PT");
-            this.age = age;
+            this.id = id;
+            this.age = 1;
             this.sicknesses = sicknesses;
             this.allergies = allergies;
-            this.prescriptions = prescriptions;
+        }
+        public Patient()
+        {
+
         }
     }
 }

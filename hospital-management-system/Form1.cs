@@ -4,12 +4,13 @@ namespace hospital_management_system
     {
         private DoctorForm doctorForm;
         private PatientForm patientForm;
+        private ConsultationMainForm consultationMainForm;
         public Form1()
         {
             InitializeComponent();
             viewDoctorBtn.Click += viewDoctors;
             viewPatientBtn.Click += viewPatients;
-            viewNurseBtn.Click += viewNurses;
+            viewConsultationBtn.Click += viewConsultations;
         }
 
         private void viewPatients(object sender, EventArgs e)
@@ -21,12 +22,12 @@ namespace hospital_management_system
             }
         }
 
-        private void viewNurses(object sender, EventArgs e)
+        private void viewConsultations(object sender, EventArgs e)
         {
-            if (doctorForm == null || doctorForm.IsDisposed)
+            if (consultationMainForm == null || consultationMainForm.IsDisposed)
             {
-                doctorForm = new DoctorForm();
-                doctorForm.Show();
+                consultationMainForm = new ConsultationMainForm();
+                consultationMainForm.Show();
             }
         }
 

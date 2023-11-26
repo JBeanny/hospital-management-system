@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             viewDoctorBtn = new Button();
-            viewNurseBtn = new Button();
+            viewConsultationBtn = new Button();
             viewPatientBtn = new Button();
             doctorLabel = new Label();
             nurseLabel = new Label();
@@ -54,16 +54,16 @@
             viewDoctorBtn.UseVisualStyleBackColor = true;
             viewDoctorBtn.Click += viewDoctors;
             // 
-            // viewNurseBtn
+            // viewConsultationBtn
             // 
-            viewNurseBtn.BackgroundImage = Resource1.nurse;
-            viewNurseBtn.BackgroundImageLayout = ImageLayout.Zoom;
-            viewNurseBtn.Cursor = Cursors.Hand;
-            viewNurseBtn.Location = new Point(666, 310);
-            viewNurseBtn.Name = "viewNurseBtn";
-            viewNurseBtn.Size = new Size(170, 163);
-            viewNurseBtn.TabIndex = 2;
-            viewNurseBtn.UseVisualStyleBackColor = true;
+            viewConsultationBtn.BackgroundImage = Resource1.consultation;
+            viewConsultationBtn.BackgroundImageLayout = ImageLayout.Zoom;
+            viewConsultationBtn.Cursor = Cursors.Hand;
+            viewConsultationBtn.Location = new Point(666, 310);
+            viewConsultationBtn.Name = "viewConsultationBtn";
+            viewConsultationBtn.Size = new Size(170, 163);
+            viewConsultationBtn.TabIndex = 2;
+            viewConsultationBtn.UseVisualStyleBackColor = true;
             // 
             // viewPatientBtn
             // 
@@ -94,13 +94,13 @@
             nurseLabel.AutoSize = true;
             nurseLabel.BorderStyle = BorderStyle.Fixed3D;
             nurseLabel.Font = new Font("Showcard Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            nurseLabel.Location = new Point(709, 500);
+            nurseLabel.Location = new Point(666, 500);
             nurseLabel.Margin = new Padding(4, 0, 4, 0);
             nurseLabel.Name = "nurseLabel";
             nurseLabel.RightToLeft = RightToLeft.No;
-            nurseLabel.Size = new Size(86, 28);
+            nurseLabel.Size = new Size(172, 28);
             nurseLabel.TabIndex = 5;
-            nurseLabel.Text = "Nurses";
+            nurseLabel.Text = "Consultations";
             // 
             // patientLabel
             // 
@@ -155,7 +155,7 @@
             Controls.Add(nurseLabel);
             Controls.Add(doctorLabel);
             Controls.Add(viewPatientBtn);
-            Controls.Add(viewNurseBtn);
+            Controls.Add(viewConsultationBtn);
             Controls.Add(viewDoctorBtn);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -169,7 +169,7 @@
 
         #endregion
         private Button viewDoctorBtn;
-        private Button viewNurseBtn;
+        private Button viewConsultationBtn;
         private Button viewPatientBtn;
         private Label doctorLabel;
         private Label nurseLabel;

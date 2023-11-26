@@ -1,28 +1,21 @@
 ﻿namespace hospital_management_system.Models
 {
-    internal class Consultation
+    public class Consultation
     {
-        private int id { get; set; }
-        private int patient_id { get; set; }
-        private int doctor_id { get; set; }
-        private int room_number { get; set; }
-        private DateTime date { get; set; }
+        public string id { get; set; }
+        public string patient_id { get; set; }
+        public string doctor_id { get; set; }
+        public string date { get; set; }
 
-        public Consultation(int id, int patient_id, int doctor_id, int room_number, DateTime date)
+        public Consultation(string id, string patient_id, string doctor_id, string date)
         {
             this.id = id;
             this.patient_id = patient_id;
             this.doctor_id = doctor_id;
-            this.room_number = room_number;
             this.date = date;
         }
 
-        public void cancel()
-        {
-
-        }
-
-        public void delay()
+        public Consultation()
         {
 
         }

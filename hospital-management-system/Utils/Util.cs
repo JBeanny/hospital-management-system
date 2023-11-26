@@ -26,5 +26,17 @@
         {
             return id + "/" + name + "/" + gender + "/" + phone + "/" + email + "/" + birthdate + "/" + specialty + "/" + room;
         }
+
+        // validate input for consultation
+        public Boolean validateInput(string id, string patient_id, string doctor_id, string date)
+        {
+            return id != "" || patient_id != "" || doctor_id != "" || date != "";
+        }
+
+        // formatted string for consultation
+        public string formattedFileData(string id, string patient_id, string doctor_id, string date)
+        {
+            return id + "/" + patient_id + "/" + doctor_id + "/" + date;
+        }
     }
 }
