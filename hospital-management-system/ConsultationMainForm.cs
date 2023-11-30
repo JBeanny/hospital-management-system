@@ -1,14 +1,13 @@
 ﻿using hospital_management_system.Models;
-using hospital_management_system.Utils;
+using hospital_management_system.Service;
 
 namespace hospital_management_system
 {
     public partial class ConsultationMainForm : Form
     {
-        string filePath = Path.Combine(Environment.CurrentDirectory, "Data", "Consultations.txt");
         List<Consultation> consultations = new List<Consultation>();
         AddConsultationForm addConsultationForm;
-        Util util = new Util();
+        private ConsultationService consultationService = new ConsultationService();
 
         // selected consultation
         Consultation selectedConsultation = new Consultation();
@@ -43,34 +42,33 @@ namespace hospital_management_system
         // handle row selection
         private void handleRowSelection(object? sender, EventArgs e)
         {
-            Consultation selectedRow = dataGridView1.CurrentRow.Tag as Consultation;
+            DataGridViewRow selectedRow = dataGridView1.CurrentRow;
 
-            if (selectedRow == null) return;
+            if (selectedRow == null || selectedRow.Tag == null || !(selectedRow.Tag is Consultation))
+            {
+                selectedConsultation = null;
+                return;
+            }
 
-            selectedConsultation.id = selectedRow.id;
-            selectedConsultation.patient_id = selectedRow.patient_id;
-            selectedConsultation.doctor_id = selectedRow.doctor_id;
-            selectedConsultation.date = selectedRow.date;
+            selectedConsultation = (Consultation)selectedRow.Tag;
         }
 
         // delete method
         private void handleDelete(object? sender, EventArgs e)
         {
-            StreamWriter writer = new StreamWriter(filePath);
-            var result = MessageBox.Show("Are you sure to delete this ?", "Delete Consultation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var result = MessageBox.Show("Are you sure to delete this ?", "Delete Appointment", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
-                consultations.ForEach(consultation =>
+                var filteredConsultation = consultationService.getConsultation(selectedConsultation.Id);
+
+                if (filteredConsultation == null)
                 {
-                    if (consultation.id == selectedConsultation.id) return;
+                    MessageBox.Show("Appointment is not found", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    string formattedString = util.formattedFileData(consultation.id, consultation.patient_id, consultation.doctor_id, consultation.date);
-
-                    writer.WriteLine(formattedString);
-                });
-
-                writer.Close();
+                consultationService.deleteConsultation(filteredConsultation.Id);
                 handleRefresh(sender, e);
             }
         }
@@ -88,41 +86,8 @@ namespace hospital_management_system
         // on load function
         private void ConsultationMainForm_Load(object sender, EventArgs e)
         {
-            readConsultationsData();
-        }
-
-        // read data from file
-        private void readConsultationsData()
-        {
-            try
-            {
-                if (File.Exists(filePath))
-                {
-                    var lines = File.ReadAllLines(filePath);
-
-                    consultations.Clear();
-                    if (lines.Length > 0)
-                    {
-                        foreach (var line in lines)
-                        {
-                            var dataRow = line.Split("/");
-                            Consultation newConsultation = new Consultation(dataRow[0], dataRow[1], dataRow[2], dataRow[3]);
-
-                            if (newConsultation == null) continue;
-                            consultations.Add(newConsultation);
-                        }
-                    }
-                    viewConsultations();
-                }
-                else
-                {
-                    MessageBox.Show("File is not existed", "Failed to open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            consultations = consultationService.getConsultations();
+            viewConsultations();
         }
 
         // view consultations
@@ -131,7 +96,7 @@ namespace hospital_management_system
             dataGridView1.Rows.Clear();
             foreach (var consultation in consultations)
             {
-                int index = dataGridView1.Rows.Add(consultation.id, consultation.patient_id, consultation.doctor_id, consultation.date);
+                int index = dataGridView1.Rows.Add(consultation.consultation_id, consultation.patient_id, consultation.doctor_id, consultation.date);
 
                 dataGridView1.Rows[index].Tag = consultation;
                 dataGridView1.Tag = dataGridView1.Rows[index];
