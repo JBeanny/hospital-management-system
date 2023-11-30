@@ -1,4 +1,5 @@
 ﻿using hospital_management_system.Models;
+using hospital_management_system.Service;
 using hospital_management_system.Utils;
 
 namespace hospital_management_system
@@ -7,9 +8,9 @@ namespace hospital_management_system
     {
 
         Util util = new Util();
-        string filePath = Path.Combine(Environment.CurrentDirectory, "Data", "Consultations.txt");
         string consultationIdToUpdate = "";
-        List<Consultation> consultations = new List<Consultation>();
+        private ConsultationService consultationService = new ConsultationService();
+        Consultation _consultationToUpdate = new Consultation();
 
         // for registration
         public AddConsultationForm(List<Consultation> consultations)
@@ -19,7 +20,6 @@ namespace hospital_management_system
             this.Text = "Consultation Registration Form";
             registerBtn.Click += register;
             cancelBtn.Click += cancel;
-            this.consultations = consultations;
         }
 
         // for modification
@@ -30,10 +30,12 @@ namespace hospital_management_system
             label1.Text = "Edit Consultation Form";
             this.Text = "Consulation Modification Form";
 
-            this.consultationIdToUpdate = consultationToUpdate.id;
+            this.consultationIdToUpdate = consultationToUpdate.consultation_id;
             patientInput.Text = consultationToUpdate.patient_id;
             doctorInput.Text = consultationToUpdate.doctor_id;
             datetimeInput.Text = consultationToUpdate.date;
+
+            _consultationToUpdate = consultationToUpdate;
 
             registerBtn.Click += modify;
         }
@@ -47,62 +49,36 @@ namespace hospital_management_system
         // modify
         private void modify(object sender, EventArgs e)
         {
-            List<Consultation> data = new List<Consultation>();
-
             try
             {
-                if (File.Exists(filePath))
+                string patient_id = patientInput.Text;
+                string doctor_id = doctorInput.Text;
+                string date = datetimeInput.Text;
+
+                if (util.validateInput(consultationIdToUpdate, patient_id, doctor_id, date))
                 {
-                    var lines = File.ReadAllLines(filePath);
-                    StreamWriter writer = new StreamWriter(filePath);
-
-                    if (duplicateDateTime(doctorInput.Text, datetimeInput.Text))
+                    if (_consultationToUpdate != null && _consultationToUpdate.Id != null)
                     {
-                        MessageBox.Show("Duplicate Consultation. Please choose another date", "Duplication", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    data.Clear();
-                    if (lines.Length > 0)
-                    {
-                        // read each line from file
-                        foreach (var line in lines)
+                        if (consultationService.duplicateDateTime(doctor_id, date))
                         {
-                            var dataRow = line.Split("/");
-                            Consultation patient = new Consultation(dataRow[0], dataRow[1], dataRow[2], dataRow[3]);
-
-                            if (patient == null) continue;
-
-                            // id is matched then modify
-                            if (dataRow[0] == consultationIdToUpdate)
-                            {
-                                string patient_id = patientInput.Text;
-                                string doctor_id = doctorInput.Text;
-                                string date = datetimeInput.Text;
-
-                                if (util.validateInput(consultationIdToUpdate, patient_id, doctor_id, date))
-                                {
-                                    // formatted string to add to file
-                                    string formattedStr = util.formattedFileData(consultationIdToUpdate, patient_id, doctor_id, date);
-
-                                    writer.WriteLine(formattedStr);
-                                    continue;
-                                }
-
-                                // if validate failed then write the old the data
-                                writer.WriteLine(line);
-                            }
-
-                            // if not matched id then write the old data
-                            writer.WriteLine(line);
+                            MessageBox.Show("Duplicate Appointment. Please choose another date", "Duplication", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
-                        writer.Close();
-                        this.Close();
+
+                        Consultation modifiedConsultation = new Consultation(_consultationToUpdate.Id, consultationIdToUpdate, patient_id, doctor_id, date);
+
+                        Consultation filteredConsultation = consultationService.getConsultation(_consultationToUpdate.Id);
+
+                        if (filteredConsultation == null)
+                        {
+                            MessageBox.Show("Appointment is not found", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        consultationService.modifyConsultation(filteredConsultation.Id, modifiedConsultation);
+
+                        MessageBox.Show("Successfully modified appointment", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("File is not existed", "Failed to open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -114,35 +90,35 @@ namespace hospital_management_system
         // register
         private void register(object sender, EventArgs e)
         {
-            // set values to add to file
-            string id = util.generateRandomId(2, "CST");
-            string patient_id = patientInput.Text;
-            string doctor_id = doctorInput.Text;
-            string date = datetimeInput.Text;
-
-
-            if (duplicateDateTime(doctor_id, date))
+            try
             {
-                MessageBox.Show("Duplicate Consultation. Please choose another date", "Duplication", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                // set values to add to file
+                string id = util.generateRandomId(2, "CST");
+                string patient_id = patientInput.Text;
+                string doctor_id = doctorInput.Text;
+                string date = datetimeInput.Text;
 
-            // validate the input
-            if (util.validateInput(id, patient_id, doctor_id, date))
-            {
-                string stringToWrite = util.formattedFileData(id, patient_id, doctor_id, date);
 
-                if (File.Exists(filePath))
+                if (consultationService.duplicateDateTime(doctor_id, date))
                 {
-                    StreamWriter writer = new StreamWriter(filePath, true);
-                    writer.WriteLine(stringToWrite);
-                    writer.Close();
+                    MessageBox.Show("Duplicate Appointment. Please choose another date", "Duplication", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // validate the input
+                if (util.validateInput(id, patient_id, doctor_id, date))
+                {
+                    Consultation newConsultation = new Consultation(id, patient_id, doctor_id, date);
+                    consultationService.createConsultation(newConsultation);
+
+                    MessageBox.Show("Successfully Registered Consultation", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     clearForm();
                 }
-                else
-                {
-                    MessageBox.Show("File is not existed", "Failed to open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -150,23 +126,6 @@ namespace hospital_management_system
         {
             patientInput.Clear();
             doctorInput.Clear();
-        }
-
-        private Boolean duplicateDateTime(string doctor_id, string date)
-        {
-            Boolean result = false;
-            consultations.ForEach(consultation =>
-            {
-                if (consultation.doctor_id == doctor_id)
-                {
-                    if (date == consultation.date)
-                    {
-                        result = true;
-                    }
-                }
-            });
-
-            return result;
         }
     }
 }

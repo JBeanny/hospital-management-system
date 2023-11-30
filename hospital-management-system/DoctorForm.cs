@@ -9,8 +9,7 @@ namespace hospital_management_system
         List<Doctor> doctors = new List<Doctor>();
         private AddDoctorForm addDoctorForm;
         Util util = new Util();
-        private MongoDBService _mongoDBService;
-        private static string _document = "doctors";
+        private DoctorService doctorService = new DoctorService();
 
         // selected row
         Doctor selectedDoctor = new Doctor();
@@ -18,8 +17,6 @@ namespace hospital_management_system
         public DoctorForm()
         {
             InitializeComponent();
-
-            _mongoDBService = new MongoDBService();
 
             addDoctorBtn.Click += handleAddDoctor;
             dataGridView1.SelectionChanged += handleRowSelection;
@@ -72,7 +69,7 @@ namespace hospital_management_system
             if (result == DialogResult.Yes)
             {
                 // Finding specific products using a filter
-                var filteredDoctor = _mongoDBService.GetDocumentById<Doctor>(_document, selectedDoctor.Id);
+                var filteredDoctor = doctorService.getDoctor(selectedDoctor.Id);
 
                 if (filteredDoctor == null)
                 {
@@ -80,7 +77,7 @@ namespace hospital_management_system
                     return;
                 }
 
-                _mongoDBService.DeleteDocument<Doctor>(_document, filteredDoctor.Id);
+                doctorService.deleteDoctor(filteredDoctor.Id);
                 handleRefresh(sender, e);
             }
         }
@@ -98,21 +95,8 @@ namespace hospital_management_system
         // on load function
         private void DoctorForm_Load(object sender, EventArgs e)
         {
-            readDoctorsData();
-        }
-
-        // read data from file
-        private void readDoctorsData()
-        {
-            try
-            {
-                doctors = _mongoDBService.GetAllDocuments<Doctor>("doctors");
-                viewDoctors();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            doctors = doctorService.getDoctors();
+            viewDoctors();
         }
 
         // view doctors

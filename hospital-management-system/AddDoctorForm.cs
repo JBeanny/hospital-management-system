@@ -8,15 +8,13 @@ namespace hospital_management_system
     {
         Util util = new Util();
         string doctorIdToUpdate = "";
-        private MongoDBService _mongoDBService;
-        private static string _document = "doctors";
         Doctor _doctorToUpdate = new Doctor();
+        private DoctorService doctorService = new DoctorService();
 
         // for registration
         public AddDoctorForm()
         {
             InitializeComponent();
-            _mongoDBService = new MongoDBService();
             label1.Text = "New Doctor Registration Form";
             this.Text = "Doctor Registration Form";
             registerBtn.Click += register;
@@ -27,9 +25,6 @@ namespace hospital_management_system
         public AddDoctorForm(string method, Doctor doctorToUpdate)
         {
             InitializeComponent();
-
-            _mongoDBService = new MongoDBService();
-
             registerBtn.Text = method;
             label1.Text = "Edit Doctor Form";
             this.Text = "Doctor Edit Form";
@@ -62,8 +57,6 @@ namespace hospital_management_system
         // modify
         private void modify(object sender, EventArgs e)
         {
-            List<Doctor> data = new List<Doctor>();
-
             try
             {
                 string name = nameInput.Text;
@@ -81,7 +74,7 @@ namespace hospital_management_system
                     {
                         Doctor modifiedDoctor = new Doctor(_doctorToUpdate.Id, doctorIdToUpdate, name, phone, email, gender, birthdate, specialty, room);
                         // Finding specific products using a filter
-                        Doctor filteredDoctor = _mongoDBService.GetDocumentById<Doctor>(_document, _doctorToUpdate.Id);
+                        Doctor filteredDoctor = doctorService.getDoctor(_doctorToUpdate.Id);
 
                         if (filteredDoctor == null)
                         {
@@ -89,7 +82,7 @@ namespace hospital_management_system
                             return;
                         }
 
-                        _mongoDBService.UpdateDocument<Doctor>(_document, filteredDoctor.Id, modifiedDoctor);
+                        doctorService.modifyDoctor(filteredDoctor.Id, modifiedDoctor);
 
                         MessageBox.Show("Successfully modified doctor", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -121,7 +114,7 @@ namespace hospital_management_system
                 if (util.validateInput(id, name, gender, phone, email, birthdate, specialty, room))
                 {
                     Doctor newDoctor = new Doctor(id, name, phone, email, gender, birthdate, specialty, room);
-                    _mongoDBService.InsertDocument(_document, newDoctor);
+                    doctorService.createDoctor(newDoctor);
 
                     MessageBox.Show("Successfully Registered Doctor", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

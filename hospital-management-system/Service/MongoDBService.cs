@@ -61,5 +61,12 @@ namespace hospital_management_system.Service
             var filter = Builders<T>.Filter.Eq("_id", id);
             collection.DeleteOne(filter);
         }
+
+        public T GetDocumentByModelId<T>(string collectionName, string model_id_format, string model_id)
+        {
+            var collection = _database.GetCollection<T>(collectionName);
+            var filter = Builders<T>.Filter.Eq(model_id_format, model_id);
+            return collection.Find(filter).FirstOrDefault();
+        }
     }
 }
