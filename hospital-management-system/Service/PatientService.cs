@@ -22,6 +22,11 @@ namespace hospital_management_system.Service
             }
         }
 
+        public Patient getPatientByPatientId(string patient_id)
+        {
+            return _mongoDBService.GetDocumentByModelId<Patient>(_document, "patient_id", patient_id);
+        }
+
         public void createPatient(Patient newPatient)
         {
             _mongoDBService.InsertDocument(_document, newPatient);

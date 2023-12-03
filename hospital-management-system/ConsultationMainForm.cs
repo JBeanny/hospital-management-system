@@ -21,6 +21,25 @@ namespace hospital_management_system
             editBtn.Click += handleEdit;
             deleteBtn.Click += handleDelete;
             refreshBtn.Click += handleRefresh;
+            searchBtn.Click += handleSearch;
+        }
+
+        // handle search action
+        private void handleSearch(object sender, EventArgs e)
+        {
+            if (searchInput.Text == null) return;
+
+            Consultation consultation = consultationService.getConsultationByConsultationId(searchInput.Text);
+
+            string msgToShow = searchResultFormat(consultation);
+
+            MessageBox.Show(msgToShow, "Search Result");
+        }
+
+        private string searchResultFormat(Consultation consultation)
+        {
+
+            return "ID: " + consultation.consultation_id + "\n" + "Patient: " + consultation.patient_id + "\n" + "Doctor: " + consultation.doctor_id + "\n" + "Appointment date: " + consultation.date;
         }
 
         // handle refresh action

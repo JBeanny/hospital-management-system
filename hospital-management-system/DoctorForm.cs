@@ -23,6 +23,24 @@ namespace hospital_management_system
             editBtn.Click += handleEditDoctor;
             deleteBtn.Click += handleDeleteDoctor;
             refreshBtn.Click += handleRefresh;
+            searchBtn.Click += handleSearch;
+        }
+
+        // handle search action
+        private void handleSearch(object sender, EventArgs e)
+        {
+            if (searchInput.Text == null) return;
+
+            Doctor doctor = doctorService.getDoctorByDoctorId(searchInput.Text);
+
+            string msgToShow = searchResultFormat(doctor);
+
+            MessageBox.Show(msgToShow, "Search Result");
+        }
+
+        private string searchResultFormat(Doctor doctor)
+        {
+            return "ID: " + doctor.doctor_id + "\n" + "Name: " + doctor.name + "\n" + "Gender: " + doctor.gender + "\n" + "Email: " + doctor.email + "\n" + "Contact: " + doctor.phone_number + "\n" + "Specialty: " + doctor.specialty;
         }
 
         // handle refresh action

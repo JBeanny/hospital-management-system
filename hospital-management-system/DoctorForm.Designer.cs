@@ -46,6 +46,8 @@
             editBtn = new Button();
             deleteBtn = new Button();
             refreshBtn = new Button();
+            searchInput = new TextBox();
+            searchBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -87,7 +89,7 @@
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = SystemColors.ActiveCaptionText;
-            dataGridView1.Location = new Point(1, 1);
+            dataGridView1.Location = new Point(1, 51);
             dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -172,7 +174,7 @@
             addDoctorBtn.BackColor = Color.White;
             addDoctorBtn.Font = new Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             addDoctorBtn.ForeColor = Color.Black;
-            addDoctorBtn.Location = new Point(702, 394);
+            addDoctorBtn.Location = new Point(702, 444);
             addDoctorBtn.Margin = new Padding(2);
             addDoctorBtn.Name = "addDoctorBtn";
             addDoctorBtn.Size = new Size(172, 40);
@@ -185,7 +187,7 @@
             editBtn.BackColor = Color.White;
             editBtn.Font = new Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             editBtn.ForeColor = Color.Black;
-            editBtn.Location = new Point(510, 394);
+            editBtn.Location = new Point(510, 444);
             editBtn.Margin = new Padding(2);
             editBtn.Name = "editBtn";
             editBtn.Size = new Size(172, 40);
@@ -198,7 +200,7 @@
             deleteBtn.BackColor = Color.White;
             deleteBtn.Font = new Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             deleteBtn.ForeColor = Color.Black;
-            deleteBtn.Location = new Point(319, 394);
+            deleteBtn.Location = new Point(319, 444);
             deleteBtn.Margin = new Padding(2);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(172, 40);
@@ -210,17 +212,39 @@
             // 
             refreshBtn.BackgroundImage = Resource1.refresh_icon;
             refreshBtn.BackgroundImageLayout = ImageLayout.Zoom;
-            refreshBtn.Location = new Point(12, 394);
+            refreshBtn.Location = new Point(12, 444);
             refreshBtn.Name = "refreshBtn";
             refreshBtn.Size = new Size(44, 40);
             refreshBtn.TabIndex = 4;
             refreshBtn.UseVisualStyleBackColor = true;
             // 
+            // searchInput
+            // 
+            searchInput.BorderStyle = BorderStyle.FixedSingle;
+            searchInput.Font = new Font("Roboto", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            searchInput.Location = new Point(636, 12);
+            searchInput.Name = "searchInput";
+            searchInput.Size = new Size(192, 30);
+            searchInput.TabIndex = 5;
+            // 
+            // searchBtn
+            // 
+            searchBtn.BackgroundImage = Resource1.search;
+            searchBtn.BackgroundImageLayout = ImageLayout.Zoom;
+            searchBtn.Font = new Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            searchBtn.Location = new Point(845, 12);
+            searchBtn.Name = "searchBtn";
+            searchBtn.Size = new Size(30, 30);
+            searchBtn.TabIndex = 6;
+            searchBtn.UseVisualStyleBackColor = true;
+            // 
             // DoctorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(889, 446);
+            ClientSize = new Size(889, 511);
+            Controls.Add(searchBtn);
+            Controls.Add(searchInput);
             Controls.Add(refreshBtn);
             Controls.Add(deleteBtn);
             Controls.Add(editBtn);
@@ -234,6 +258,7 @@
             Load += DoctorForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -251,5 +276,7 @@
         private Button editBtn;
         private Button deleteBtn;
         private Button refreshBtn;
+        private TextBox searchInput;
+        private Button searchBtn;
     }
 }

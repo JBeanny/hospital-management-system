@@ -37,6 +37,11 @@ namespace hospital_management_system.Service
             return _mongoDBService.GetDocumentById<Doctor>(_document, doctorId);
         }
 
+        public Doctor getDoctorByDoctorId(string doctor_id)
+        {
+            return _mongoDBService.GetDocumentByModelId<Doctor>(_document, "doctor_id", doctor_id);
+        }
+
         public void modifyDoctor(ObjectId doctorId, Doctor doctorToModify)
         {
             _mongoDBService.UpdateDocument<Doctor>(_document, doctorId, doctorToModify);

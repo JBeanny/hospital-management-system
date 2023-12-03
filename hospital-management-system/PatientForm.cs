@@ -25,6 +25,26 @@ namespace hospital_management_system
             editBtn.Click += handleEdit;
             deleteBtn.Click += handleDelete;
             dataGridView1.SelectionChanged += handleRowSelection;
+            searchBtn.Click += handleSearch;
+        }
+
+        // handle search action
+        private void handleSearch(object sender, EventArgs e)
+        {
+            if (searchInput.Text == null) return;
+
+            Patient patient = patientService.getPatientByPatientId(searchInput.Text);
+
+            string msgToShow = searchResultFormat(patient);
+
+            MessageBox.Show(msgToShow, "Search Result");
+        }
+
+        private string searchResultFormat(Patient patient)
+        {
+            string allergy = patient.allergies != null ? patient.allergies.ToString() : "No allergy";
+
+            return "ID: " + patient.patient_id + "\n" + "Name: " + patient.name + "\n" + "Gender: " + patient.gender + "\n" + "Email: " + patient.email + "\n" + "Contact: " + patient.phone_number + "\n" + "Sicknesses: " + patient.sicknesses + "\n" + "Allergies: " + allergy;
         }
 
         // handle row selection

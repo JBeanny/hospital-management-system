@@ -42,6 +42,11 @@ namespace hospital_management_system.Service
             _mongoDBService.UpdateDocument<Consultation>(_document, consultationId, consultationToModify);
         }
 
+        public Consultation getConsultationByConsultationId(string consultation_id)
+        {
+            return _mongoDBService.GetDocumentByModelId<Consultation>(_document, "consultation_id", consultation_id);
+        }
+
         public Boolean duplicateDateTime(string consultation_id, string date)
         {
             Boolean result = false;

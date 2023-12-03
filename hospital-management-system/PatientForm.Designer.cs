@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -45,50 +45,53 @@
             editBtn = new Button();
             deleteBtn = new Button();
             refreshBtn = new Button();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            searchBtn = new Button();
+            searchInput = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(120, 214, 198);
-            dataGridViewCellStyle1.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.Padding = new Padding(5);
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(120, 214, 198);
+            dataGridViewCellStyle5.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.Padding = new Padding(5);
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.BackgroundColor = Color.White;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(120, 214, 198);
-            dataGridViewCellStyle2.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.Padding = new Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(120, 214, 198);
+            dataGridViewCellStyle6.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.Padding = new Padding(5);
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.Padding = new Padding(5);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.Padding = new Padding(5);
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.Location = new Point(-1, 0);
+            dataGridView1.Location = new Point(-1, 61);
             dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 33;
             dataGridView1.Size = new Size(885, 368);
@@ -155,7 +158,7 @@
             addBtn.BackColor = Color.White;
             addBtn.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
             addBtn.ForeColor = Color.Black;
-            addBtn.Location = new Point(694, 388);
+            addBtn.Location = new Point(694, 449);
             addBtn.Margin = new Padding(2);
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(172, 40);
@@ -168,7 +171,7 @@
             editBtn.BackColor = Color.White;
             editBtn.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
             editBtn.ForeColor = Color.Black;
-            editBtn.Location = new Point(498, 388);
+            editBtn.Location = new Point(498, 449);
             editBtn.Margin = new Padding(2);
             editBtn.Name = "editBtn";
             editBtn.Size = new Size(172, 40);
@@ -181,7 +184,7 @@
             deleteBtn.BackColor = Color.White;
             deleteBtn.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
             deleteBtn.ForeColor = Color.Black;
-            deleteBtn.Location = new Point(301, 388);
+            deleteBtn.Location = new Point(301, 449);
             deleteBtn.Margin = new Padding(2);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(172, 40);
@@ -193,18 +196,40 @@
             // 
             refreshBtn.BackgroundImage = Resource1.refresh_icon;
             refreshBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            refreshBtn.Location = new Point(17, 387);
+            refreshBtn.Location = new Point(17, 448);
             refreshBtn.Margin = new Padding(2);
             refreshBtn.Name = "refreshBtn";
             refreshBtn.Size = new Size(41, 40);
             refreshBtn.TabIndex = 5;
             refreshBtn.UseVisualStyleBackColor = true;
             // 
+            // searchBtn
+            // 
+            searchBtn.BackgroundImage = Resource1.search;
+            searchBtn.BackgroundImageLayout = ImageLayout.Zoom;
+            searchBtn.Font = new Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            searchBtn.Location = new Point(837, 12);
+            searchBtn.Name = "searchBtn";
+            searchBtn.Size = new Size(30, 30);
+            searchBtn.TabIndex = 8;
+            searchBtn.UseVisualStyleBackColor = true;
+            // 
+            // searchInput
+            // 
+            searchInput.BorderStyle = BorderStyle.FixedSingle;
+            searchInput.Font = new Font("Roboto", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            searchInput.Location = new Point(628, 12);
+            searchInput.Name = "searchInput";
+            searchInput.Size = new Size(192, 30);
+            searchInput.TabIndex = 7;
+            // 
             // PatientForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(883, 446);
+            ClientSize = new Size(883, 511);
+            Controls.Add(searchBtn);
+            Controls.Add(searchInput);
             Controls.Add(refreshBtn);
             Controls.Add(deleteBtn);
             Controls.Add(editBtn);
@@ -218,6 +243,7 @@
             Load += PatientForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -235,5 +261,8 @@
         private Button editBtn;
         private Button deleteBtn;
         private Button refreshBtn;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button searchBtn;
+        private TextBox searchInput;
     }
 }
