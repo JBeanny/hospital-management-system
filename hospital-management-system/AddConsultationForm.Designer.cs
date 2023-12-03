@@ -41,21 +41,23 @@
             // 
             // cancelBtn
             // 
-            cancelBtn.BackColor = Color.Salmon;
+            cancelBtn.BackColor = Color.White;
             cancelBtn.ForeColor = SystemColors.ActiveCaptionText;
-            cancelBtn.Location = new Point(458, 477);
+            cancelBtn.Location = new Point(321, 286);
+            cancelBtn.Margin = new Padding(2);
             cancelBtn.Name = "cancelBtn";
-            cancelBtn.Size = new Size(219, 67);
+            cancelBtn.Size = new Size(153, 40);
             cancelBtn.TabIndex = 45;
             cancelBtn.Text = "Cancel";
             cancelBtn.UseVisualStyleBackColor = false;
             // 
             // registerBtn
             // 
-            registerBtn.BackColor = Color.MediumSeaGreen;
-            registerBtn.Location = new Point(701, 477);
+            registerBtn.BackColor = Color.White;
+            registerBtn.Location = new Point(491, 286);
+            registerBtn.Margin = new Padding(2);
             registerBtn.Name = "registerBtn";
-            registerBtn.Size = new Size(219, 67);
+            registerBtn.Size = new Size(153, 40);
             registerBtn.TabIndex = 44;
             registerBtn.Text = "Register";
             registerBtn.UseVisualStyleBackColor = false;
@@ -64,9 +66,11 @@
             // 
             label1.Dock = DockStyle.Top;
             label1.Font = new Font("Showcard Gothic", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(120, 214, 198);
             label1.Location = new Point(0, 0);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(937, 38);
+            label1.Size = new Size(656, 23);
             label1.TabIndex = 33;
             label1.Text = "New Patient Registration Form";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -74,18 +78,20 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(199, 269);
+            label5.Location = new Point(139, 161);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(49, 25);
+            label5.Size = new Size(31, 15);
             label5.TabIndex = 51;
             label5.Text = "Date";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(199, 169);
+            label6.Location = new Point(139, 101);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(90, 25);
+            label6.Size = new Size(57, 15);
             label6.TabIndex = 49;
             label6.Text = "Doctor ID";
             // 
@@ -93,19 +99,21 @@
             // 
             doctorInput.AutoCompleteMode = AutoCompleteMode.Suggest;
             doctorInput.BorderStyle = BorderStyle.FixedSingle;
-            doctorInput.Location = new Point(199, 206);
+            doctorInput.Location = new Point(139, 124);
+            doctorInput.Margin = new Padding(2);
             doctorInput.MaxLength = 20;
             doctorInput.Multiline = true;
             doctorInput.Name = "doctorInput";
-            doctorInput.Size = new Size(542, 45);
+            doctorInput.Size = new Size(380, 28);
             doctorInput.TabIndex = 48;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(199, 68);
+            label2.Location = new Point(139, 41);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(88, 25);
+            label2.Size = new Size(58, 15);
             label2.TabIndex = 47;
             label2.Text = "Patient ID";
             // 
@@ -114,11 +122,12 @@
             patientInput.AutoCompleteMode = AutoCompleteMode.Suggest;
             patientInput.BorderStyle = BorderStyle.FixedSingle;
             patientInput.ImeMode = ImeMode.Off;
-            patientInput.Location = new Point(199, 108);
+            patientInput.Location = new Point(139, 65);
+            patientInput.Margin = new Padding(2);
             patientInput.MaxLength = 30;
             patientInput.Multiline = true;
             patientInput.Name = "patientInput";
-            patientInput.Size = new Size(542, 45);
+            patientInput.Size = new Size(380, 28);
             patientInput.TabIndex = 46;
             // 
             // datetimeInput
@@ -126,17 +135,18 @@
             datetimeInput.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             datetimeInput.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
             datetimeInput.Format = DateTimePickerFormat.Custom;
-            datetimeInput.Location = new Point(199, 313);
+            datetimeInput.Location = new Point(139, 188);
+            datetimeInput.Margin = new Padding(2);
             datetimeInput.Name = "datetimeInput";
-            datetimeInput.Size = new Size(542, 32);
+            datetimeInput.Size = new Size(381, 24);
             datetimeInput.TabIndex = 52;
             datetimeInput.UseWaitCursor = true;
             // 
             // AddConsultationForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(937, 552);
+            ClientSize = new Size(656, 331);
             Controls.Add(datetimeInput);
             Controls.Add(label5);
             Controls.Add(label6);
@@ -146,6 +156,7 @@
             Controls.Add(cancelBtn);
             Controls.Add(registerBtn);
             Controls.Add(label1);
+            Margin = new Padding(2);
             MaximizeBox = false;
             Name = "AddConsultationForm";
             Text = "AddConsultationForm";

@@ -130,10 +130,8 @@ namespace hospital_management_system
         private void clearForm()
         {
             nameInput.Clear();
-            genderInput.Clear();
             phoneInput.Clear();
             emailInput.Clear();
-            birthdateInput.Clear();
             specialtyInput.Clear();
             roomInput.Clear();
         }

@@ -32,19 +32,19 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            genderInput = new TextBox();
             label4 = new Label();
             phoneInput = new TextBox();
             label5 = new Label();
             emailInput = new TextBox();
             label6 = new Label();
-            birthdateInput = new TextBox();
             label7 = new Label();
             specialtyInput = new TextBox();
             label8 = new Label();
             roomInput = new TextBox();
             registerBtn = new Button();
             cancelBtn = new Button();
+            birthdateInput = new DateTimePicker();
+            genderInput = new ComboBox();
             SuspendLayout();
             // 
             // nameInput
@@ -64,7 +64,7 @@
             label1.BackColor = Color.Transparent;
             label1.Dock = DockStyle.Top;
             label1.Font = new Font("Showcard Gothic", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlText;
+            label1.ForeColor = Color.FromArgb(120, 214, 198);
             label1.Location = new Point(0, 0);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
@@ -92,19 +92,6 @@
             label3.Size = new Size(45, 15);
             label3.TabIndex = 4;
             label3.Text = "Gender";
-            // 
-            // genderInput
-            // 
-            genderInput.AutoCompleteMode = AutoCompleteMode.Suggest;
-            genderInput.BorderStyle = BorderStyle.FixedSingle;
-            genderInput.ImeMode = ImeMode.Off;
-            genderInput.Location = new Point(91, 98);
-            genderInput.Margin = new Padding(2);
-            genderInput.MaxLength = 30;
-            genderInput.Multiline = true;
-            genderInput.Name = "genderInput";
-            genderInput.Size = new Size(211, 28);
-            genderInput.TabIndex = 3;
             // 
             // label4
             // 
@@ -160,19 +147,6 @@
             label6.TabIndex = 10;
             label6.Text = "Birthdate";
             // 
-            // birthdateInput
-            // 
-            birthdateInput.AutoCompleteMode = AutoCompleteMode.Suggest;
-            birthdateInput.BorderStyle = BorderStyle.FixedSingle;
-            birthdateInput.Cursor = Cursors.Cross;
-            birthdateInput.Location = new Point(91, 214);
-            birthdateInput.Margin = new Padding(2);
-            birthdateInput.MaxLength = 120;
-            birthdateInput.Multiline = true;
-            birthdateInput.Name = "birthdateInput";
-            birthdateInput.Size = new Size(211, 28);
-            birthdateInput.TabIndex = 9;
-            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -218,7 +192,7 @@
             // 
             // registerBtn
             // 
-            registerBtn.BackColor = Color.MediumSeaGreen;
+            registerBtn.BackColor = Color.White;
             registerBtn.Location = new Point(480, 284);
             registerBtn.Margin = new Padding(2);
             registerBtn.Name = "registerBtn";
@@ -229,7 +203,7 @@
             // 
             // cancelBtn
             // 
-            cancelBtn.BackColor = Color.Salmon;
+            cancelBtn.BackColor = Color.White;
             cancelBtn.ForeColor = SystemColors.ActiveCaptionText;
             cancelBtn.Location = new Point(310, 284);
             cancelBtn.Margin = new Padding(2);
@@ -239,11 +213,31 @@
             cancelBtn.Text = "Cancel";
             cancelBtn.UseVisualStyleBackColor = false;
             // 
+            // birthdateInput
+            // 
+            birthdateInput.CustomFormat = "yyyy-MM-dd";
+            birthdateInput.Format = DateTimePickerFormat.Custom;
+            birthdateInput.Location = new Point(91, 218);
+            birthdateInput.Name = "birthdateInput";
+            birthdateInput.Size = new Size(211, 23);
+            birthdateInput.TabIndex = 17;
+            // 
+            // genderInput
+            // 
+            genderInput.FormattingEnabled = true;
+            genderInput.Items.AddRange(new object[] { "Male", "Female", "Others" });
+            genderInput.Location = new Point(91, 102);
+            genderInput.Name = "genderInput";
+            genderInput.Size = new Size(211, 23);
+            genderInput.TabIndex = 18;
+            // 
             // AddDoctorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(656, 331);
+            Controls.Add(genderInput);
+            Controls.Add(birthdateInput);
             Controls.Add(cancelBtn);
             Controls.Add(registerBtn);
             Controls.Add(label8);
@@ -251,13 +245,11 @@
             Controls.Add(label7);
             Controls.Add(specialtyInput);
             Controls.Add(label6);
-            Controls.Add(birthdateInput);
             Controls.Add(label5);
             Controls.Add(emailInput);
             Controls.Add(label4);
             Controls.Add(phoneInput);
             Controls.Add(label3);
-            Controls.Add(genderInput);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(nameInput);
@@ -276,18 +268,18 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox genderInput;
         private Label label4;
         private TextBox phoneInput;
         private Label label5;
         private TextBox emailInput;
         private Label label6;
-        private TextBox birthdateInput;
         private Label label7;
         private TextBox specialtyInput;
         private Label label8;
         private TextBox roomInput;
         private Button registerBtn;
         private Button cancelBtn;
+        private DateTimePicker birthdateInput;
+        private ComboBox genderInput;
     }
 }
