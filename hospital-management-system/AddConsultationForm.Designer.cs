@@ -156,10 +156,11 @@
             Controls.Add(cancelBtn);
             Controls.Add(registerBtn);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(2);
             MaximizeBox = false;
             Name = "AddConsultationForm";
-            Text = "AddConsultationForm";
+            Text = "Appointment Registration Form";
             ResumeLayout(false);
             PerformLayout();
         }
