@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             refreshBtn = new Button();
             deleteBtn = new Button();
             editBtn = new Button();
@@ -47,83 +47,89 @@
             // 
             refreshBtn.BackgroundImage = Resource1.refresh_icon;
             refreshBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            refreshBtn.Location = new Point(23, 661);
+            refreshBtn.Location = new Point(16, 397);
+            refreshBtn.Margin = new Padding(2);
             refreshBtn.Name = "refreshBtn";
-            refreshBtn.Size = new Size(76, 66);
+            refreshBtn.Size = new Size(42, 40);
             refreshBtn.TabIndex = 10;
             refreshBtn.UseVisualStyleBackColor = true;
             // 
             // deleteBtn
             // 
-            deleteBtn.BackColor = Color.Firebrick;
+            deleteBtn.BackColor = Color.White;
             deleteBtn.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            deleteBtn.ForeColor = Color.White;
-            deleteBtn.Location = new Point(429, 662);
+            deleteBtn.ForeColor = Color.Black;
+            deleteBtn.Location = new Point(300, 397);
+            deleteBtn.Margin = new Padding(2);
             deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(246, 66);
+            deleteBtn.Size = new Size(172, 40);
             deleteBtn.TabIndex = 9;
             deleteBtn.Text = "Delete";
             deleteBtn.UseVisualStyleBackColor = false;
             // 
             // editBtn
             // 
-            editBtn.BackColor = Color.SteelBlue;
+            editBtn.BackColor = Color.White;
             editBtn.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            editBtn.ForeColor = Color.White;
-            editBtn.Location = new Point(711, 662);
+            editBtn.ForeColor = Color.Black;
+            editBtn.Location = new Point(498, 397);
+            editBtn.Margin = new Padding(2);
             editBtn.Name = "editBtn";
-            editBtn.Size = new Size(246, 66);
+            editBtn.Size = new Size(172, 40);
             editBtn.TabIndex = 8;
             editBtn.Text = "Edit";
             editBtn.UseVisualStyleBackColor = false;
             // 
             // addBtn
             // 
-            addBtn.BackColor = Color.ForestGreen;
+            addBtn.BackColor = Color.White;
             addBtn.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            addBtn.ForeColor = Color.White;
-            addBtn.Location = new Point(991, 662);
+            addBtn.ForeColor = Color.Black;
+            addBtn.Location = new Point(694, 397);
+            addBtn.Margin = new Padding(2);
             addBtn.Name = "addBtn";
-            addBtn.Size = new Size(246, 66);
+            addBtn.Size = new Size(172, 40);
             addBtn.TabIndex = 7;
             addBtn.Text = "Add";
             addBtn.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle4.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle4.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.Padding = new Padding(5);
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(120, 214, 198);
+            dataGridViewCellStyle1.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.Padding = new Padding(5);
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.BackgroundColor = Color.White;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.Padding = new Padding(5);
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(120, 214, 198);
+            dataGridViewCellStyle2.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.Padding = new Padding(5);
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            dataGridView1.Location = new Point(-2, 16);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.Padding = new Padding(5);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.Location = new Point(-1, 10);
+            dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new Size(1264, 613);
+            dataGridView1.Size = new Size(885, 368);
             dataGridView1.TabIndex = 6;
             // 
             // Column1
@@ -131,40 +137,41 @@
             Column1.HeaderText = "ID";
             Column1.MinimumWidth = 8;
             Column1.Name = "Column1";
-            Column1.Width = 74;
+            Column1.Width = 56;
             // 
             // Column2
             // 
             Column2.HeaderText = "Patient ID";
             Column2.MinimumWidth = 8;
             Column2.Name = "Column2";
-            Column2.Width = 144;
+            Column2.Width = 104;
             // 
             // Column3
             // 
             Column3.HeaderText = "Doctor ID";
             Column3.MinimumWidth = 8;
             Column3.Name = "Column3";
-            Column3.Width = 138;
+            Column3.Width = 101;
             // 
             // Column4
             // 
             Column4.HeaderText = "Date";
             Column4.MinimumWidth = 8;
             Column4.Name = "Column4";
-            Column4.Width = 98;
+            Column4.Width = 72;
             // 
             // ConsultationMainForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1261, 744);
+            ClientSize = new Size(883, 446);
             Controls.Add(refreshBtn);
             Controls.Add(deleteBtn);
             Controls.Add(editBtn);
             Controls.Add(addBtn);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(2);
             MaximizeBox = false;
             Name = "ConsultationMainForm";
             Text = "Consultation Management Form";
